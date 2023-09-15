@@ -1,0 +1,17 @@
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> ans;  //存放中序序列的结点值
+        stack<TreeNode*> tmp; //存放左结点指针,用于访问其右子树
+        TreeNode* cur=root;
+        while(!tmp.empty()||cur){ //栈空+当前结点是空结点,出循环
+            while(cur){ //把所有左结点入栈
+                tmp.push(cur);
+                cur=cur->left;
+            }
+            cur=tmp.top();  //拿取栈顶元素
+            ans.push_back(cur->val); //入中序序列
+ 
+            cur=cur->right; //访问其右子树
+            tmp.pop(); //该结点没啥用了,直接出
+        }
+        return ans;
+    }
