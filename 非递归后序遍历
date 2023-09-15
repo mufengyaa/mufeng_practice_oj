@@ -1,0 +1,21 @@
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> ans;  //存放中序序列的结点值
+        stack<TreeNode*> tmp; //存放左结点指针,用于访问其右子树
+        TreeNode* cur=root,*prev=nullptr; 
+        while(!tmp.empty()||cur){ //栈空+当前结点是空结点,出循环
+            while(cur){ //把所有左结点入栈(cur就用于把当前结点的左结点存入栈)
+                tmp.push(cur);              
+                cur=cur->left;
+            }
+            TreeNode* top=tmp.top(); //代表当前的根结点
+            if(top->right==nullptr || top->right==prev){
+                ans.push_back(top->val); //入后序序列
+                prev=top; //用于下一次循环时,判断上一个结点的右子树是否被访问过
+                tmp.pop(); //该结点没啥用了,直接出
+            }
+            else{
+                cur=top->right; //没有被访问过,就去右子树进行循环
+            }
+        }
+        return ans;
+    }
