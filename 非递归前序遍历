@@ -1,0 +1,16 @@
+vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> ans;  //存放前序序列的结点值
+        stack<TreeNode*> tmp; //存放左结点指针,用于访问其右子树
+        TreeNode* cur=root;
+        while(!tmp.empty()||cur){ //栈空+当前结点是空结点,出循环
+            while(cur){
+                ans.push_back(cur->val); //入左结点
+                tmp.push(cur); //存左结点指针
+                cur=cur->left;
+            }
+            TreeNode* top=tmp.top(); 
+            cur=top->right; //访问右子树
+            tmp.pop();
+        }
+        return ans;
+    }
