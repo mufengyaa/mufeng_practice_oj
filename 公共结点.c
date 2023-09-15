@@ -1,11 +1,11 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-//ÊäÈëÁ½¸öÁ´±í£¬ÕÒ³öËüÃÇµÄµÚÒ»¸ö¹«¹²½áµã
+//è¾“å…¥ä¸¤ä¸ªé“¾è¡¨ï¼Œæ‰¾å‡ºå®ƒä»¬çš„ç¬¬ä¸€ä¸ªå…¬å…±ç»“ç‚¹
 
 struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* headB) {
     int lenA = 0, lenB = 0;
     struct ListNode* curA = headA, * curB = headB;
-    //¼ÆËãÁ´±í³¤¶È
+    //è®¡ç®—é“¾è¡¨é•¿åº¦
     while (curA) {
         ++lenA;
         curA = curA->next;
@@ -22,11 +22,11 @@ struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* he
         longList = headB;
         shortList = headA;
     }
-    //ÈÃ³¤Á´±íÏÈ×ß¼¸²½
+    //è®©é•¿é“¾è¡¨å…ˆèµ°å‡ æ­¥
     while (gap--) {
         longList = longList->next;
     }
-    //Á½¸öÁ´±íÍ¬Ê±×ß£¬Ö±µ½Óöµ½ÏàÍ¬µÄ½Úµã
+    //ä¸¤ä¸ªé“¾è¡¨åŒæ—¶èµ°ï¼Œç›´åˆ°é‡åˆ°ç›¸åŒçš„èŠ‚ç‚¹
     while (longList && shortList)
     {
         if (longList == shortList) {
