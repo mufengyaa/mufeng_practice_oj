@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-//反转一个单链表
+//藝麓脳艦艊钮赂枚木慕脕麓膮铆
 
 struct ListNode* reverseList(struct ListNode* head) {
     if (head == NULL) {
