@@ -1,0 +1,22 @@
+TreeNode* _build(vector<int>& inorder, vector<int>& postorder,int& posti,int inbegin,int inend){
+        if(inbegin>inend){
+            return nullptr;
+        }
+        TreeNode* root=new TreeNode(postorder[posti]);
+        int begin=inbegin;
+        while(begin<=inend){
+            if(postorder[posti]==inorder[begin]){
+                break;
+            }
+            begin++;
+        }
+        --posti;  //注意是--嗷
+        root->right=_build(inorder,postorder,posti,begin+1,inend);//先被构建的是右子树
+        root->left=_build(inorder,postorder,posti,inbegin,begin-1);
+        return root;
+}
+    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+        int posti=postorder.size()-1;
+        TreeNode* root=_build(inorder,postorder,posti,0,inorder.size()-1);
+        return  root;
+    }
